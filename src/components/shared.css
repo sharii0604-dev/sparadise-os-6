@@ -1,0 +1,231 @@
+/* ---- Panel lateral (Nueva cita, Nueva clienta, etc.) ---- */
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 54, 44, 0.35);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 50;
+}
+.panel {
+  background: var(--crema);
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  animation: panel-in 0.22s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+@keyframes panel-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--nude-linea);
+  background: var(--superficie);
+  position: sticky;
+  top: 0;
+}
+.panel-header h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+}
+.panel-cerrar {
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+.panel-body {
+  padding: 22px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .panel {
+    width: auto;
+  }
+}
+
+/* ---- Estados compartidos ---- */
+.estado-vacio {
+  font-size: 13.5px;
+  color: var(--texto-secundario);
+  text-align: center;
+  padding: 28px 12px;
+  margin: 0;
+}
+.estado-cargando {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  padding: 16px 0;
+  margin: 0;
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--nude-linea);
+  border-top-color: var(--coral);
+  animation: girar 0.7s linear infinite;
+}
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.campo-error {
+  color: var(--coral-oscuro);
+  font-size: 11.5px;
+  margin: 4px 0 0;
+}
+.campo select,
+.campo textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: var(--texto);
+}
+.campo-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.panel-acciones {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid var(--nude-linea);
+  margin-top: 20px;
+}
+
+.lista-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 6px 0 0;
+}
+.chip-toggle {
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+.chip-toggle--activo {
+  background: var(--durazno);
+  border-color: var(--durazno);
+  color: #5C2E14;
+  font-weight: 500;
+}
+
+/* ---- Tabla simple (Clientas, Pagos, Tratamientos) ---- */
+.tabla-wrap {
+  overflow-x: auto;
+}
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.tabla th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--nude-linea);
+  white-space: nowrap;
+}
+.tabla td {
+  padding: 12px;
+  border-bottom: 1px solid var(--nude-linea);
+  vertical-align: middle;
+}
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+.tabla-fila-clic {
+  cursor: pointer;
+}
+.tabla-fila-clic:hover {
+  background: var(--crema);
+}
+
+/* ---- Pestañas (usadas en CRM, Ficha, Pagos, Marketing) ---- */
+.pestanas {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--nude-linea);
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.pestana {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.pestana--activa {
+  color: var(--coral-oscuro);
+  font-weight: 500;
+  border-bottom-color: var(--coral);
+}
+
+/* ---- Toast de confirmación ---- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--texto);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.toast--error {
+  background: var(--coral-oscuro);
+}
+
+@media (min-width: 768px) {
+  .toast {
+    bottom: 32px;
+  }
+}

@@ -1,0 +1,78 @@
+/*
+  Tokens visuales de Sparadise OS.
+  Fuente de verdad: Sparadise_OS_Guia_Visual.html y 01_Panel_Bienvenida.html.
+  No se agregan colores, radios ni tipografías que no estén en esos archivos.
+*/
+:root {
+  --crema: #FBF5EE;
+  --superficie: #FFFFFF;
+  --nude: #E9D8C7;
+  --nude-linea: #E8DDD1;
+  --durazno: #F0B48C;
+  --coral: #D9704F;
+  --coral-oscuro: #B85738;
+  --texto: #4A362C;
+  --texto-secundario: #8A7364;
+  --exito: #8FA07C;
+  --exito-bg: #EDF1E8;
+  --alerta: #C98A2E;
+  --alerta-bg: #FBF0DD;
+
+  /* Fondo del "frame" de la app (usado en el body del panel de bienvenida) */
+  --fondo-app: #F1EAE1;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo-app);
+  color: var(--texto);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Foco visible — accesibilidad mínima, no decorativo */
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}

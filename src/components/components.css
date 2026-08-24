@@ -1,0 +1,239 @@
+/*
+  Componentes base compartidos.
+  Clases y valores copiados literalmente de 01_Panel_Bienvenida.html y
+  Sparadise_OS_Guia_Visual.html — mismos nombres de clase, mismos px.
+*/
+
+/* Avatar circular con iniciales, tipografía Fraunces (mismo patrón en sidebar,
+   tarjetas de cita, listas simples, con distintos tamaños según el mockup) */
+.avatar {
+  border-radius: 50%;
+  background: var(--nude);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  color: var(--coral-oscuro);
+  flex-shrink: 0;
+}
+.avatar--sm {
+  width: 26px;
+  height: 26px;
+  font-size: 10.5px;
+}
+.avatar--md {
+  width: 34px;
+  height: 34px;
+  font-size: 12px;
+}
+.avatar--lg {
+  width: 38px;
+  height: 38px;
+  font-size: 14px;
+}
+.avatar--durazno {
+  background: var(--durazno);
+  color: #5C2E14;
+}
+
+/* Tarjeta genérica */
+.card {
+  background: var(--superficie);
+  border: 1px solid var(--nude-linea);
+  border-radius: 18px;
+  padding: 20px 22px;
+}
+.card-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.card-h .card-h__t {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+}
+.card-h .card-h__n {
+  font-size: 11.5px;
+  color: var(--texto-secundario);
+  background: var(--crema);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.ver-todas {
+  font-size: 12px;
+  color: var(--coral-oscuro);
+  font-weight: 500;
+}
+
+/* Badges (VIP / activa) */
+.badge {
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+.badge--vip {
+  background: var(--durazno);
+  color: #5C2E14;
+}
+.badge--activo {
+  background: var(--exito-bg);
+  color: #4C5B3C;
+}
+
+/* Estado de cita */
+.estado {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.estado--confirmada {
+  background: var(--exito-bg);
+  color: #4C5B3C;
+}
+.estado--pendiente {
+  background: var(--alerta-bg);
+  color: #8A5D1E;
+}
+
+/* Chip informativo (usado en "paquetes por vencer") */
+.chip {
+  background: var(--alerta-bg);
+  color: #8A5D1E;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Botones */
+.btn-primario {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  background: var(--coral);
+  color: #FFF9F5;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.btn-primario svg {
+  width: 14px;
+  height: 14px;
+  stroke: #FFF9F5;
+}
+.btn-primario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secundario {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--coral-oscuro);
+  border: 1.5px solid var(--durazno);
+  border-radius: 999px;
+  padding: 10px 20px;
+}
+
+.btn-texto {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--texto-secundario);
+  border: none;
+  padding: 10px 8px;
+}
+
+/* Botón ícono circular (buscador secundario, notificaciones) */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--superficie);
+  border: 1px solid var(--nude-linea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--texto-secundario);
+}
+.icon-btn .dot {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* Buscador */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--superficie);
+  border: 1px solid var(--nude-linea);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  width: 200px;
+}
+.search svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--texto-secundario);
+}
+
+/* Formularios (Login usa este patrón, tal como especifica la Guía Visual §06) */
+.campo {
+  margin-bottom: 18px;
+}
+.campo label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--texto);
+}
+.campo input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: var(--texto);
+}
+.campo input::placeholder {
+  color: var(--texto-secundario);
+}
+
+.form-error {
+  background: var(--alerta-bg);
+  border-left: 3px solid var(--alerta);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--texto);
+  margin-bottom: 18px;
+}

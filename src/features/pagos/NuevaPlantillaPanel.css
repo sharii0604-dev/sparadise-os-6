@@ -1,0 +1,30 @@
+.fila-plantilla {
+  display: grid;
+  grid-template-columns: 1fr 90px 36px;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+.fila-plantilla select,
+.fila-plantilla input {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  border-radius: 10px;
+  padding: 9px 10px;
+  color: var(--texto);
+}
+.fila-plantilla__quitar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--crema);
+  border: 1px solid var(--nude-linea);
+  font-size: 13px;
+  color: var(--coral-oscuro);
+}
+.fila-plantilla__quitar:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

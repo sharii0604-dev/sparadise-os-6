@@ -1,0 +1,197 @@
+.agenda {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+.agenda-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.agenda-top h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.agenda-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.agenda-nav .btn-secundario {
+  padding: 6px 12px;
+}
+.agenda-fecha {
+  font-size: 13.5px;
+  font-weight: 500;
+  min-width: 180px;
+}
+
+.cita-detalle p {
+  margin: 0 0 6px;
+  font-size: 13.5px;
+}
+.acciones-cita {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.acciones-cita .btn-secundario,
+.acciones-cita .btn-texto {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+/* ---- Vista móvil: lista cronológica ---- */
+.agenda-grilla-desktop {
+  display: none;
+}
+.agenda-lista-movil {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fila-cita {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--superficie);
+  border: 1px solid var(--nude-linea);
+  border-left: 4px solid var(--exito);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+}
+.fila-cita--sin_confirmar {
+  border-left-color: var(--alerta);
+  border-left-style: dashed;
+}
+.fila-cita--completada {
+  border-left-color: var(--nude);
+  opacity: 0.85;
+}
+.fila-cita--cancelada {
+  border-left-color: var(--texto-secundario);
+  opacity: 0.6;
+}
+.fila-cita--cancelada .fila-cita__info b {
+  text-decoration: line-through;
+}
+.fila-cita__hora {
+  font-family: var(--font-display);
+  font-size: 14px;
+  width: 46px;
+  flex-shrink: 0;
+}
+.fila-cita__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.fila-cita__info span {
+  font-size: 11.5px;
+  color: var(--texto-secundario);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Vista de escritorio: columnas por recurso ---- */
+@media (min-width: 900px) {
+  .agenda-lista-movil {
+    display: none;
+  }
+  .agenda-grilla-desktop {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 1fr);
+    gap: 16px;
+    overflow-x: auto;
+    align-items: start;
+  }
+  .agenda-columna__titulo {
+    font-family: var(--font-display);
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding-left: 2px;
+  }
+  .agenda-columna__pista {
+    position: relative;
+    background: var(--superficie);
+    border: 1px solid var(--nude-linea);
+    border-radius: 14px;
+  }
+
+  .linea-ahora {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--coral);
+    z-index: 2;
+  }
+  .linea-ahora::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+
+  .bloque-cita {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    border-radius: 8px;
+    padding: 5px 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+    background: var(--exito-bg);
+    border: 1px solid var(--exito);
+  }
+  .bloque-cita--sin_confirmar {
+    background: var(--alerta-bg);
+    border: 1.5px dashed var(--alerta);
+  }
+  .bloque-cita--completada {
+    background: var(--nude);
+    border: 1px solid var(--nude-linea);
+    opacity: 0.85;
+  }
+  .bloque-cita--cancelada {
+    background: transparent;
+    border: 1px solid var(--texto-secundario);
+    opacity: 0.55;
+  }
+  .bloque-cita--cancelada .bloque-cita__nombre {
+    text-decoration: line-through;
+  }
+  .bloque-cita__hora {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--texto-secundario);
+  }
+  .bloque-cita__nombre {
+    font-size: 12px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bloque-cita__estado {
+    font-size: 10px;
+    color: var(--texto-secundario);
+  }
+}

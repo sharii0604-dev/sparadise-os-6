@@ -1,0 +1,135 @@
+.app-shell {
+  min-height: 100vh;
+  background: var(--fondo-app);
+}
+
+/* ---- Sidebar (desktop) — valores exactos de .sidebar en 01_Panel_Bienvenida.html ---- */
+.sidebar {
+  display: none;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 28px;
+  padding-left: 6px;
+}
+.logo b {
+  color: var(--coral);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--texto-secundario);
+  margin-bottom: 2px;
+}
+.nav-item svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+}
+.nav-item--activo,
+.nav-item.nav-item--activo {
+  background: var(--nude);
+  color: var(--coral-oscuro);
+  font-weight: 500;
+}
+
+.sidebar-user {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--nude-linea);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  width: 100%;
+  text-align: left;
+}
+.sidebar-user__nombre {
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.sidebar-user__rol {
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+.app-shell__content {
+  padding: 28px 16px 90px;
+}
+
+/* ---- Bottom nav (mobile) — valores exactos de .bottom-nav en 01_Panel_Bienvenida.html ---- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: var(--superficie);
+  border-top: 1px solid var(--nude-linea);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 20;
+}
+.bn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--texto-secundario);
+}
+.bn-item svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+.bn-item--activo,
+.bn-item.bn-item--activo {
+  color: var(--coral-oscuro);
+  font-weight: 500;
+}
+
+/* ---- Breakpoint desktop ----
+   La Guía Visual §07 diferencia "computadora" (menú lateral fijo) de
+   "celular/tablet" (barra inferior) conceptualmente, sin fijar un px exacto.
+   768px es el punto de corte técnico estándar para ese límite tablet/desktop
+   que usamos hasta que se apruebe uno distinto. */
+@media (min-width: 768px) {
+  .app-shell {
+    display: flex;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background: var(--superficie);
+    border-right: 1px solid var(--nude-linea);
+    padding: 22px 16px;
+    flex-shrink: 0;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+  .app-shell__content {
+    flex: 1;
+    padding: 28px 32px 40px;
+  }
+  .bottom-nav {
+    display: none;
+  }
+}

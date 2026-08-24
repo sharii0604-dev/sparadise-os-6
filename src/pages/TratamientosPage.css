@@ -1,0 +1,16 @@
+.tratamientos {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.tratamientos-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.tratamientos-top h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+}
