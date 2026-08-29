@@ -528,7 +528,8 @@ export interface Database {
         }
         Insert: never
         Update: never
-      }
-    }
+     }
+    Views: {}
+    Functions: {}
   }
 }
