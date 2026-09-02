@@ -40,11 +40,13 @@ export interface Database {
         // autoelevarse); usuario_update_duena permite modificar CUALQUIER
         // usuario, incluyendo estado, solo si el actor tiene rol 'Dueña'.
         Update: { estado?: 'activo' | 'desactivado'; preferencia_bienvenida?: 'frase' | 'versiculo' | 'ninguna' }
+        Relationships: []
       }
       rol: {
         Row: { id_rol: number; nombre: string; descripcion: string | null }
         Insert: never
         Update: never
+        Relationships: []
       }
 
       // ---- Catálogos ----
@@ -52,46 +54,55 @@ export interface Database {
         Row: { id_categoria: number; nombre: string; activa: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       tipo_consentimiento: {
         Row: { id_tipo_consentimiento: number; nombre: string; descripcion: string | null; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       canal_llegada: {
         Row: { id_canal_llegada: number; nombre: string; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       contraindicacion_tipo: {
         Row: { id_contraindicacion_tipo: number; nombre: string; activa: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       documento_tipo: {
         Row: { id_documento_tipo: number; nombre: string; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       motivo_cancelacion: {
         Row: { id_motivo_cancelacion: number; nombre: string; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       cabina: {
         Row: { id_cabina: number; nombre: string; activa: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       metodo_pago: {
         Row: { id_metodo_pago: number; nombre: string; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       red_social: {
         Row: { id_red_social: number; nombre: string; activa: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
 
       // ---- Clientas y expediente ----
@@ -136,11 +147,13 @@ export interface Database {
           es_vip?: boolean
         }
         Update: Partial<Database['public']['Tables']['clienta']['Insert']>
+        Relationships: []
       }
       cliente_contraindicacion: {
         Row: { id_clienta: UUID; id_contraindicacion_tipo: number; fecha_registro: DateStr }
         Insert: { id_clienta: UUID; id_contraindicacion_tipo: number }
         Update: never
+        Relationships: []
       }
       evaluacion_inicial: {
         Row: {
@@ -156,11 +169,13 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['evaluacion_inicial']['Row'], 'id_evaluacion' | 'fecha'>
         Update: never
+        Relationships: []
       }
       evaluacion_tratamiento_recomendado: {
         Row: { id_evaluacion: UUID; id_tratamiento: UUID }
         Insert: { id_evaluacion: UUID; id_tratamiento: UUID }
         Update: never
+        Relationships: []
       }
       plan_tratamiento: {
         Row: {
@@ -179,6 +194,7 @@ export interface Database {
           fecha_inicio?: DateStr | null
         }
         Update: never
+        Relationships: []
       }
       medida_corporal: {
         Row: {
@@ -196,11 +212,13 @@ export interface Database {
           presion_arterial?: string | null
         }
         Update: never
+        Relationships: []
       }
       medida_zona: {
         Row: { id_medida_zona: UUID; id_medida: UUID; zona: string; valor_cm: number }
         Insert: { id_medida: UUID; zona: string; valor_cm: number }
         Update: never
+        Relationships: []
       }
       consentimiento: {
         Row: {
@@ -214,6 +232,7 @@ export interface Database {
         }
         Insert: { id_clienta: UUID; id_tipo_consentimiento: number; estado?: string }
         Update: Partial<{ estado: string; fecha_firma: DateStr | null; forma_captura: string | null; archivo_firma: string | null }>
+        Relationships: []
       }
       foto_expediente: {
         Row: {
@@ -243,6 +262,7 @@ export interface Database {
           estado?: 'activa' | 'archivada'
         }
         Update: never
+        Relationships: []
       }
       documento_adjunto: {
         Row: {
@@ -260,6 +280,7 @@ export interface Database {
           notas?: string | null
         }
         Update: never
+        Relationships: []
       }
 
       // ---- Tratamientos y agenda ----
@@ -274,11 +295,13 @@ export interface Database {
         }
         Insert: { id_categoria: number; nombre: string; duracion_minutos: number; activo?: boolean }
         Update: never
+        Relationships: []
       }
       tratamiento_consentimiento_requerido: {
         Row: { id_tratamiento: UUID; id_tipo_consentimiento: number }
         Insert: never
         Update: never
+        Relationships: []
       }
       cita: {
         Row: {
@@ -319,6 +342,7 @@ export interface Database {
           id_motivo_cancelacion: number | null
           notas: string | null
         }>
+        Relationships: []
       }
       sesion_bitacora: {
         Row: {
@@ -333,6 +357,7 @@ export interface Database {
         }
         Insert: never
         Update: never
+        Relationships: []
       }
 
       // ---- Paquetes y pagos ----
@@ -340,11 +365,13 @@ export interface Database {
         Row: { id_plantilla_paquete: UUID; nombre: string; precio_sugerido: number | null; activa: boolean }
         Insert: { nombre: string; precio_sugerido?: number | null; activa?: boolean }
         Update: never
+        Relationships: []
       }
       plantilla_paquete_detalle: {
         Row: { id_plantilla_paquete: UUID; id_tratamiento: UUID; cantidad_sesiones: number }
         Insert: { id_plantilla_paquete: UUID; id_tratamiento: UUID; cantidad_sesiones: number }
         Update: never
+        Relationships: []
       }
       paquete: {
         Row: {
@@ -364,6 +391,7 @@ export interface Database {
           precio_total: number
         }
         Update: never
+        Relationships: []
       }
       paquete_detalle: {
         Row: {
@@ -381,16 +409,19 @@ export interface Database {
           precio_snapshot: number
         }
         Update: never
+        Relationships: []
       }
       abono: {
         Row: { id_abono: UUID; id_paquete: UUID; id_metodo_pago: number; fecha: DateStr; monto: number }
         Insert: { id_paquete: UUID; id_metodo_pago: number; monto: number }
         Update: never
+        Relationships: []
       }
       producto: {
         Row: { id_producto: UUID; nombre: string; precio: number; activo: boolean }
         Insert: never
         Update: never
+        Relationships: []
       }
       registro_producto: {
         Row: {
@@ -414,6 +445,7 @@ export interface Database {
           observaciones?: string | null
         }
         Update: never
+        Relationships: []
       }
 
       // ---- Marketing ----
@@ -428,11 +460,13 @@ export interface Database {
         }
         Insert: { nombre: string; fecha_inicio: DateStr; fecha_fin: DateStr; estado?: string }
         Update: never
+        Relationships: []
       }
       promocion_tratamiento: {
         Row: { id_promocion: UUID; id_tratamiento: UUID }
         Insert: { id_promocion: UUID; id_tratamiento: UUID }
         Update: never
+        Relationships: []
       }
       testimonio: {
         Row: {
@@ -446,6 +480,7 @@ export interface Database {
         }
         Insert: never
         Update: never
+        Relationships: []
       }
       publicacion_contenido: {
         Row: {
@@ -465,6 +500,7 @@ export interface Database {
           estado?: string
         }
         Update: never
+        Relationships: []
       }
 
       // ---- Sistema ----
@@ -481,6 +517,7 @@ export interface Database {
         }
         Insert: never
         Update: never
+        Relationships: []
       }
       regla_recordatorio: {
         Row: {
@@ -494,6 +531,7 @@ export interface Database {
         }
         Insert: never
         Update: never
+        Relationships: []
       }
       notificacion: {
         Row: {
@@ -508,6 +546,7 @@ export interface Database {
         }
         Insert: never
         Update: never
+        Relationships: []
       }
       interes_consulta: {
         Row: {
@@ -528,7 +567,13 @@ export interface Database {
         }
         Insert: never
         Update: never
-     }
+        Relationships: []
+      }
+    }
+    // Supabase requiere estas dos secciones, incluso si el proyecto aún no
+    // usa vistas ni funciones. Sin ellas `public` no cumple el esquema
+    // genérico de supabase-js y todas las tablas terminan inferidas como
+    // `never` durante insert/update.
     Views: {}
     Functions: {}
   }
